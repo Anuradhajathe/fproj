@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sample</title>
+</head>
+<body>
+
+    {{msg}}
+
+    {{emps}}
+
+    <br><br><br>
+    <form action="http://localhost:5000/emp/save/" method="post">
+        Enter Emp Id : <input type="text" name="eid" value="{{empob.eid}}"><br><br>
+        Enter Emp Name : <input type="text" name="enam" value="{{empob.ename}}"><br><br>
+        Enter Emp Email : <input type="text" name="eemail" value="{{empob.eemail}}"><br><br>
+        Enter Emp Age : <input type="text" name="eage" value="{{empob.eage}}"><br><br>
+        Enter Emp Salary : <input type="text" name="esal" value="{{empob.esalary}}"><br><br>
+        <input type="submit"><br><br>
+    </form>
+
+</body>
+</html>

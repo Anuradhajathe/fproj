@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ProductInfo</title>
+</head>
+<body>
+
+    <center><h3>Product Information...!</h3></center>
+
+    {{msg}}
+    <br><br>
+
+    <form action="http://localhost:5000/product/save/" method="post">
+        <!-- value -- controller obj -- fields-->
+        <!-- req - form--name -- -->
+        Product Id :   <input type="text" name="pid" readonly value="{{prod.pid}}"> <br><br>
+        Product Name :   <input type="text" name="pnm" value="{{prod.pname}}"> <br><br>
+        Product Qty :   <input type="text" name="pqty" value="{{prod.pqty}}"> <br><br>
+        Product Desc :   <input type="text" name="pdesc" value="{{prod.pdsc}}"> <br><br>
+        Product Cat :   <input type="text" name="pcat" value="{{prod.pcat}}"> <br><br>
+        Product Price :   <input type="text" name="pprice" value="{{prod.pprice}}"> <br><br>
+        Product Vendor :   <input type="text" name="pven" value="{{prod.pven}}"> <br><br>
+        <input type="submit">
+
+    </form>
+
+    <br><br><br>
+
+
+    {% if products %}
+    <table border="2">
+            <thead>
+            <td>PID</td>
+            <td>PNAME</td>
+            <td>PQTY</td>
+            <td>PPRICE</td>
+            <td>PCAT</td>
+            <td>PVEN</td>
+            <td>PDESC</td>
+            <td>Action</td>
+            </thead>
+
+
+        {% for prod in products%}
+            <tbody>
+            <td>{{prod.pid}}</td>
+            <td>{{prod.pname}}</td>
+            <td>{{prod.pqty}}</td>
+            <td>{{prod.pprice}}</td>
+            <td>{{prod.pcat}}</td>
+            <td>{{prod.pven}}</td>
+            <td>{{prod.pdsc}}</td>
+            <td>
+                <a href="/product/edit/{{prod.pid}}"> EDIT</a>
+                <a href="/product/delete/{{prod.pid}}">DELETE</a>
+
+            </td>
+            </tbody>
+        {% endfor %}
+
+    </table>
+    {% endif %}
+
+</body>
+</html>

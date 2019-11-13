@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Address Information</title>
+</head>
+<body>
+
+    {{amsg}}
+
+   Value : {{a}}
+
+    <form action="http://localhost:5000/address/save/" method="post">
+        <br><br>
+        AddressId : <input type="text" name="aid" value="{{adr.id}}" readonly><br><br>
+        AddressCity : <input type="text" name="acity" value="{{adr.city}}"><br><br>
+
+        <input type="submit">
+    </form>
+
+    <table>
+            <thead>
+                <td>ID</td>
+                <td>CITY</td>
+                <td>ACTION</td>
+            </thead>
+
+            {% for adr in adrs %}
+                <tbody>
+                    <td>{{adr.id}}</td>
+                    <td>{{adr.city}}</td>
+                    <td>
+                        <a href="/edit/address/{{adr.id}}">EDIT</a> |
+                        <a href="/delete/address/{{adr.id}}">DELETE</a>
+                    </td>
+                </tbody>
+            {% endfor %}
+    </table>
+
+</body>
+</html>

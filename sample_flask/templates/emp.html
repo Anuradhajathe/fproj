@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Information</title>
+</head>
+<body>
+
+    {{amsg}}
+
+    <form action="http://localhost:5000/emp/save/" method="post">
+        <br><br>
+        EmpId : <input type="text" name="eid" value="{{emp.id}}" readonly><br><br>
+        EmpName : <input type="text" name="ename" value="{{emp.cname}}"><br><br>
+
+        Address List <select name="sadr" multiple>
+                {% for adr in adrs%}
+
+                 {% if adr.employee is none %}
+                            <option value="{{adr.id}}">{{adr.city}}>>{{adr.id}}</option>
+                {% elif adr.employee.id==emp.id %}
+                    <option selected value="{{adr.id}}">{{adr.city}}->{{adr.id}}</option>
+                {% endif %}
+                    {% endfor %}
+                    </select><br><br>
+
+
+        <input type="submit">
+    </form>
+
+    <table>
+            <thead>
+                <td>ID</td>
+                <td>Name</td>
+                <td>ACTION</td>
+            </thead>
+
+            {% for emp in emps %}
+                <tbody>
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.cname}}</td>
+                    <td>
+                        <a href="/edit/emp/{{emp.id}}">EDIT</a> |
+                        <a href="/delete/emp/{{emp.id}}">DELETE</a>
+                    </td>
+                </tbody>
+            {% endfor %}
+    </table>
+
+</body>
+</html>
